@@ -1,0 +1,22 @@
+
+function contact(event) {
+    event.preventDefault();
+    const loading = document.querySelector('.modal__overlay--loading')
+    const success = document.querySelector('.modal__overlay--success')
+    loading.classList += " modal__overlay--visisble";
+    emailjs
+        .sendForm(
+            'service_hn27a9t',
+            'template_elqdq8w',
+            event.target,
+            'user_aWx58n98j7Oi7jtT0hFXZ'
+        ).then(()=> {
+        loading.classList.remove("modal__overlay--visisble");
+        success.classList +=" modal__overlay--visisble"
+        console.log('it worked 1')
+        }).catch(() =>{
+            loading.classList.remove("modal__overlay--visible")
+            alert("the email service is temprarily unavailable. Please contact me directly on email alexmelkonworks@gmail.com")
+        })
+
+}
